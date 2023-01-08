@@ -4,29 +4,45 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
+import { ResponsiveDrawer } from './rout/test/test'
 
-function NavBar(){
-  return<><AppBar component='nav'>
-    <Toolbar>
-    
-    </Toolbar>
-  </AppBar>
+function NavBar() {
+  return <>
+    <AppBar component='nav'>
+      <Toolbar>
+
+      </Toolbar>
+    </AppBar>
   </>
 }
- function App() {
 
+function SideBar() {
   return <>
+    <ResponsiveDrawer></ResponsiveDrawer>
+  </>
+}
 
+
+
+
+function App() {
+  return <>
     <Router>
       <Routes>
         <Route path='/login/*' element={<Login></Login>} ></Route>
-
+        <Route path='/test/*' element={<ResponsiveDrawer></ResponsiveDrawer>} ></Route>
       </Routes>
     </Router>
   </>
-
 }
 
 export default App;
-//hocaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa where have you beeeeennnn 
 
+// test layout
+// camcel case testLayout TestLayout
+// dash case test-layout
+
+// 1. url ve path tipli 
+// &2^@#&! \/
+
+// her bir komanda, ya vertikal ya horizontal

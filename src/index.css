@@ -12,21 +12,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
 main {
-background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.15);
 
 }
-input{
-  background-color:rgba(19, 25, 84, 0.9) ;
+
+input {
+  background-color: rgba(19, 25, 84, 0.9);
   border: none;
-  
-}
-button{
-  background-color:rgba(19, 25, 84, 0.9) ;
 
 }
-.password-icon{
+
+button {
+  background-color: rgba(19, 25, 84, 0.9);
+
+}
+
+.password-icon {
   position: absolute;
   top: 20px;
 }
 
+.buttons {
+  display: flex;
+  justify-content: end;
+
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
