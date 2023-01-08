@@ -25,4 +25,8 @@ button{
   background-color:rgba(19, 25, 84, 0.9) ;
 
 }
+.password-icon{
+  position: absolute;
+  top: 20px;
+}
 
