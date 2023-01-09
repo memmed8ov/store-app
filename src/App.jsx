@@ -5,23 +5,8 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Test } from './rout/test/test'
-
-function NavBar() {
-  return <>
-    <AppBar component='nav'>
-      <Toolbar>
-
-      </Toolbar>
-    </AppBar>
-  </>
-}
-
-function SideBar() {
-  return <>
-    <Test></Test>
-  </>
-}
-
+import { Categories } from './rout/pages/categories/categories';
+import { BaseLayout } from './rout/layout/base-layout';
 
 
 
@@ -30,6 +15,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/login/*' element={<Login></Login>} ></Route>
+        <Route path='/categories/*' element={<Categories></Categories>} ></Route>
         <Route path='/test/*' element={<Test></Test>} ></Route>
       </Routes>
     </Router>

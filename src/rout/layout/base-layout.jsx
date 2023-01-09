@@ -14,27 +14,57 @@ import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-
+import { useNavigate } from 'react-router-dom'
 const drawerWidth = 240;
 
 
 export function BaseLayout(props) {
-
+    const navigate = useNavigate()
     const drawer = (
         <div>
             <Toolbar />
             <Divider />
-            <List>
-                {['Products', 'Categories', 'Shippment', 'Sales&Orders', 'Users'].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
-                ))}
+            <List >
+                <ListItem disablePadding>
+                    <ListItemButton onClick={() => { navigate('/products') }}>
+                        <ListItemIcon>
+                        <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={'Products'} />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                    <ListItemButton onClick={() => { navigate('/categories') }}>
+                        <ListItemIcon>
+                        <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={'Categories'} />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                    <ListItemButton onClick={() => { navigate('/shippment') }}>
+                        <ListItemIcon>
+                        <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={'Shippment'} />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem  disablePadding>
+                    <ListItemButton onClick={() => { navigate('/sales-orders') }}>
+                        <ListItemIcon>
+                        <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={'Sales&Orders'} />
+                    </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                    <ListItemButton onClick={() => { navigate('/users') }}>
+                        <ListItemIcon>
+                        <InboxIcon />
+                        </ListItemIcon>
+                        <ListItemText primary={'Users'} />
+                    </ListItemButton>
+                </ListItem>
             </List>
             <Divider />
         </div>
@@ -124,3 +154,5 @@ export function BaseLayout(props) {
 
 }
 
+// relative path - without beginning slash
+// absolute path - with beginning slash
