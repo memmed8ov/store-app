@@ -4,7 +4,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
-import { ResponsiveDrawer } from './rout/test/test'
+import { Test } from './rout/test/test'
 
 function NavBar() {
   return <>
@@ -18,7 +18,7 @@ function NavBar() {
 
 function SideBar() {
   return <>
-    <ResponsiveDrawer></ResponsiveDrawer>
+    <Test></Test>
   </>
 }
 
@@ -30,7 +30,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/login/*' element={<Login></Login>} ></Route>
-        <Route path='/test/*' element={<ResponsiveDrawer></ResponsiveDrawer>} ></Route>
+        <Route path='/test/*' element={<Test></Test>} ></Route>
       </Routes>
     </Router>
   </>
