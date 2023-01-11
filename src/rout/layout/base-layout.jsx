@@ -15,11 +15,16 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import { useNavigate } from 'react-router-dom'
+
 const drawerWidth = 240;
 
 
 export function BaseLayout(props) {
     const navigate = useNavigate()
+    const handleClick = () => {
+        localStorage.removeItem('token')
+        navigate('/login')
+    }
     const drawer = (
         <div>
             <Toolbar />
@@ -28,7 +33,7 @@ export function BaseLayout(props) {
                 <ListItem disablePadding>
                     <ListItemButton onClick={() => { navigate('/products') }}>
                         <ListItemIcon>
-                        <InboxIcon />
+                            <InboxIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Products'} />
                     </ListItemButton>
@@ -36,7 +41,7 @@ export function BaseLayout(props) {
                 <ListItem disablePadding>
                     <ListItemButton onClick={() => { navigate('/categories') }}>
                         <ListItemIcon>
-                        <InboxIcon />
+                            <InboxIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Categories'} />
                     </ListItemButton>
@@ -44,15 +49,15 @@ export function BaseLayout(props) {
                 <ListItem disablePadding>
                     <ListItemButton onClick={() => { navigate('/shippment') }}>
                         <ListItemIcon>
-                        <InboxIcon />
+                            <InboxIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Shippment'} />
                     </ListItemButton>
                 </ListItem>
-                <ListItem  disablePadding>
+                <ListItem disablePadding>
                     <ListItemButton onClick={() => { navigate('/sales-orders') }}>
                         <ListItemIcon>
-                        <InboxIcon />
+                            <InboxIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Sales&Orders'} />
                     </ListItemButton>
@@ -60,7 +65,7 @@ export function BaseLayout(props) {
                 <ListItem disablePadding>
                     <ListItemButton onClick={() => { navigate('/users') }}>
                         <ListItemIcon>
-                        <InboxIcon />
+                            <InboxIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Users'} />
                     </ListItemButton>
@@ -72,11 +77,9 @@ export function BaseLayout(props) {
 
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
-
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-
     const container = window !== undefined ? () => window().document.body : undefined;
 
     return (
@@ -87,22 +90,20 @@ export function BaseLayout(props) {
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
-                }}
-            >
+                }}>
                 <Toolbar >
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
-                    >
+                        sx={{ mr: 2, display: { sm: 'none' } }}>
                         <MenuIcon />
                     </IconButton>
                     <div className='flex'>
                         <div className='flex-grow'></div>
                         <div className='top-bar-buttons'>
-                            <button style={{ marginRight: '10px', color: 'white', borderRadius: '40px', width: '90px', height: '40px' }}>Logout</button>
+                            <button style={{ marginRight: '10px', color: 'white', borderRadius: '40px', width: '90px', height: '40px' }} onClick={handleClick}>Logout</button>
                             <button style={{ color: 'white', borderRadius: '40px', width: '90px', height: '40px' }}>User Name</button>
                         </div>
                     </div>
@@ -111,8 +112,7 @@ export function BaseLayout(props) {
             <Box
                 component="nav"
                 sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-                aria-label="mailbox folders"
-            >
+                aria-label="mailbox folders">
                 {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
                 <Drawer
                     container={container}
@@ -125,8 +125,7 @@ export function BaseLayout(props) {
                     sx={{
                         display: { xs: 'block', sm: 'none' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-                    }}
-                >
+                    }}>
                     {drawer}
                 </Drawer>
                 <Drawer
@@ -135,23 +134,18 @@ export function BaseLayout(props) {
                         display: { xs: 'none', sm: 'block' },
                         '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
                     }}
-                    open
-                >
+                    open>
                     {drawer}
                 </Drawer>
             </Box>
             <Box
                 component="main"
-                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
-            >
+                sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
                 <Toolbar />
-
                 {props.children}
-
             </Box>
         </Box>
     )
-
 }
 
 // relative path - without beginning slash

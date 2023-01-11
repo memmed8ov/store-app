@@ -3,7 +3,7 @@ export function Categories() {
 
     return <>
         <BaseLayout>
-            <h1 style={{ color: 'white' }}>hello cateeeeeee</h1>
+        < button style={{ width: '70px', height: '40px', background: 'grey' }}>Add</button>
         </BaseLayout>
     </>
 }

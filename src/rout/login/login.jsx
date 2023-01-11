@@ -1,4 +1,5 @@
 import axios from "axios"
+import { useNavigate } from 'react-router-dom'
 import { useState } from "react"
 import VisibilityIcon from '@mui/icons-material/Visibility';
 
@@ -6,7 +7,7 @@ export function Login() {
     const [username, setUserName] = useState('')
     const [password, setPassword] = useState('')
     const [show, setShow] = useState('password')
-
+    const navigate = useNavigate()
     return <>
         <main style={{ width: '400px', height: '400px', margin: '100px auto', borderRadius: '50px', textAlign: 'center' }}>
             <h1 style={{ paddingTop: '20px' }}>LOGIN</h1>
@@ -40,15 +41,16 @@ export function Login() {
                     const token = response.data.token.content
                     localStorage.setItem('token', token)
 
+                    navigate('/test')
+
                 }, err => {
                     alert('username or password is incorrect')
                 })
             }} style={{ width: "70px", height: "30px", textAlign: 'center', color: 'grey' }}>sign in</button>
         </main>
     </>
-
-
-
-
-
 }
+/*
+ Logical problem
+
+*/
