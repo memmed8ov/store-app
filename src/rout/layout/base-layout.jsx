@@ -5,19 +5,17 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
+import CodeSharpIcon from '@mui/icons-material/CodeSharp';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import { useNavigate } from 'react-router-dom'
 
 const drawerWidth = 240;
-
 
 export function BaseLayout(props) {
     const navigate = useNavigate()
@@ -26,14 +24,14 @@ export function BaseLayout(props) {
         navigate('/login')
     }
     const drawer = (
-        <div>
+        <div className="sidebarcolor">
             <Toolbar />
             <Divider />
-            <List >
+            <List>
                 <ListItem disablePadding>
                     <ListItemButton onClick={() => { navigate('/products') }}>
                         <ListItemIcon>
-                            <InboxIcon />
+                            < CodeSharpIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Products'} />
                     </ListItemButton>
@@ -41,7 +39,7 @@ export function BaseLayout(props) {
                 <ListItem disablePadding>
                     <ListItemButton onClick={() => { navigate('/categories') }}>
                         <ListItemIcon>
-                            <InboxIcon />
+                            < CodeSharpIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Categories'} />
                     </ListItemButton>
@@ -49,7 +47,7 @@ export function BaseLayout(props) {
                 <ListItem disablePadding>
                     <ListItemButton onClick={() => { navigate('/shippment') }}>
                         <ListItemIcon>
-                            <InboxIcon />
+                            < CodeSharpIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Shippment'} />
                     </ListItemButton>
@@ -57,7 +55,7 @@ export function BaseLayout(props) {
                 <ListItem disablePadding>
                     <ListItemButton onClick={() => { navigate('/sales-orders') }}>
                         <ListItemIcon>
-                            <InboxIcon />
+                            < CodeSharpIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Sales&Orders'} />
                     </ListItemButton>
@@ -65,7 +63,7 @@ export function BaseLayout(props) {
                 <ListItem disablePadding>
                     <ListItemButton onClick={() => { navigate('/users') }}>
                         <ListItemIcon>
-                            <InboxIcon />
+                            < CodeSharpIcon />
                         </ListItemIcon>
                         <ListItemText primary={'Users'} />
                     </ListItemButton>
@@ -91,7 +89,7 @@ export function BaseLayout(props) {
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
                 }}>
-                <Toolbar >
+                <Toolbar style={{ background: 'white' }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -100,7 +98,7 @@ export function BaseLayout(props) {
                         sx={{ mr: 2, display: { sm: 'none' } }}>
                         <MenuIcon />
                     </IconButton>
-                    <div className='flex'>
+                    <div className='flex' >
                         <div className='flex-grow'></div>
                         <div className='top-bar-buttons'>
                             <button style={{ marginRight: '10px', color: 'white', borderRadius: '40px', width: '90px', height: '40px' }} onClick={handleClick}>Logout</button>

@@ -49,3 +49,11 @@ button {
 .flex-grow {
   flex-grow: 1;
 }
+.sidebarcolor{
+ color:  rgba(19, 25, 84, 0.9);
+}
+.laf{
+  background-color: aliceblue;
+  width: 130px;
+  height: 30px;
+}

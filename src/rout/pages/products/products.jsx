@@ -7,13 +7,32 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import ClearIcon from '@mui/icons-material/Clear';
-import DoneIcon from '@mui/icons-material/Done';
-import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+import { BasicCrudActions } from '../../BasicCrudActions/BasicCrudActions';
+
 export function Products() {
+    const navigate = useNavigate()
+    const [products, setProducts] = useState([])
+
+    function productList() {
+        axios.get('http://tiswork.tisserv.net:9009/product?limit=1000', {
+            headers: {
+                // Authorization: 'Beaerer ' + localStorage.getItem('token')
+            }
+        }).then(resp => {
+            setProducts(resp.data.content)
+        })
+    }
+    useEffect(() => {
+        productList()
+    }, [])
+
     return <>
         <BaseLayout>
-            < button style={{ width: '70px', height: '40px', background: 'grey' }}>Add</button>
+            <button style={{ width: '70px', height: '40px', background: 'grey' }}
+                onClick={() => { navigate('/products/add') }}>Add</button>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="caption table">
                     <TableHead>
@@ -24,43 +43,27 @@ export function Products() {
                             <TableCell>Actions</TableCell>
                         </TableRow>
                     </TableHead>
-                    <TableBody>
+                    <TableBody>{products.map(productItem =>
                         <TableRow >
-                            <TableCell ></TableCell>
-                            <TableCell ></TableCell>
-                            <TableCell ></TableCell>
+                            <TableCell >{productItem.properties.category}</TableCell>
+                            <TableCell >{productItem.properties.name}</TableCell>
+                            <TableCell >{productItem.properties.description}</TableCell>
                             <TableCell style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                <button style={{ width: '40px', height: '30px', background: 'grey' }}>{<DoneIcon />}</button>
-                                <button style={{ width: '40px', height: '30px', background: 'grey' }}>{<PriorityHighIcon/>}</button>
-                                <button style={{ width: '40px', height: '30px', background: 'grey' }}>{<ClearIcon />}</button>
+                                <BasicCrudActions onReload={productList} pageName='product' pageUrlPart='products' item={productItem}></BasicCrudActions>
                             </TableCell>
                         </TableRow>
-                    </TableBody>
+                    )}</TableBody>
                 </Table>
             </TableContainer>
         </BaseLayout>
     </>
 }
 
+// what is productItem.id in reality
+/// cari setrin product itemi. ve ya cari setri gostericisi
 
+/*
 
-{/* <table className='container table bordered table-success'>
-            <thead>
-                <tr>
-                    <th>
-                        Category
-                    </th>
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Details
-                    </th>
-                    <th>
-                        Actions
-                    </th>
-                </tr>
-            </thead>
-        </table>
-            <h1 style={{ color: 'YELLOW' }}>GET OUT HERE</h1> */}
+productlari secib kateqorialara elave etmek
 
+*/
