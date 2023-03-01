@@ -3,7 +3,7 @@ export function SalesOrder() {
 
     return <>
         <BaseLayout>
-            <h1 style={{ color: 'red' }}>jokeeeeee</h1>
+            <h1 style={{ color: 'red' }}>Hello</h1>
         </BaseLayout>
     </>
 }

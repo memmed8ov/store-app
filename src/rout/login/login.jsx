@@ -10,13 +10,10 @@ export function Login() {
     return <>
         <main style={{ width: '400px', height: '400px', margin: '100px auto', borderRadius: '50px', textAlign: 'center' }}>
             <h1 style={{ paddingTop: '20px' }}>LOGIN</h1>
-            
             <div  style={{ display: 'grid', gap: '10px', width: '100%',paddingLeft:'100px' }}>
             <input type="text" placeholder="username" style={{ height: '30px', width: '200px',  textAlign: 'center', color: 'white' }}
              value={username} onChange={e => setUserName(e.target.value)} />
-           
             <Password value={password} onChange={e => setPassword((e.target.value))} />
-           
             <button onClick={() => {
                 let object = {
                     'Username': username,
@@ -36,17 +33,3 @@ export function Login() {
         </main>
     </>
 }
-
-// biz normalda, password funksiasini bele cagiracagdiq:
-
-// babel dili
-// component = funksia
-
-// biz normalda Password(123, 3213)
-// babel dilinde bele cagiracagig:   <Password value={123} onChange={3213} />
-// 
-
-// function Password(props) {
-    
-//     console.log(props.value + props.onChange)
-// }

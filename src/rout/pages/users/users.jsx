@@ -41,7 +41,7 @@ export function Users() {
                         </TableRow>
                     </TableHead>
                     <TableBody>{users.map(usersItem =>
-                        <TableRow >
+                        <TableRow key={usersItem.id} >
                             <TableCell >{usersItem.username}</TableCell>
                             <TableCell >----</TableCell>
                             <TableCell></TableCell>

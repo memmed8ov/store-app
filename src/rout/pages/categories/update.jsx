@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 import { BaseLayout } from '../../layout/base-layout'
-export function Update() {
+export function CategoriesUpdate() {
     const navigate = useNavigate()
     const itemId = useParams().id
     const [name, setName] = useState('')
@@ -44,7 +44,7 @@ export function Update() {
                     }
                     axios.put('http://tiswork.tisserv.net:9009/category/' + itemId, object,{
                         headers: {
-                            // Authorization: 'Beaerer ' + localStorage.getItem('token')
+                            Authorization: 'Bearer ' + localStorage.getItem('token')
                         }
                     }).then(() => {
                         navigate('/categories')

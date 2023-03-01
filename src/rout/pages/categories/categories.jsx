@@ -18,7 +18,7 @@ export function Categories() {
     function categoriesList() {
         axios.get('http://tiswork.tisserv.net:9009/category?limit=1000',{
             headers: {
-                // Authorization: 'Beaerer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('token')
             }
         }).then(resp => {
             setCategories(resp.data.content)
@@ -55,21 +55,5 @@ export function Categories() {
         </BaseLayout>
     </>
 }
-
-
-
-// import { BaseLayout } from '../../layout/base-layout'
-
-// export function Categories() {
-    
-//     return <>
-//         <BaseLayout>
-//         < button style={{ width: '70px', height: '40px', background: 'grey' }}>Add</button>
-//         </BaseLayout>
-//     </>
-// }
-
-// name, description, actions
-
 
 

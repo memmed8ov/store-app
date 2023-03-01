@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-export function Add() {
+export function ProductsAdd() {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [categories, setCategories] = useState([])
@@ -13,26 +13,12 @@ export function Add() {
     useEffect(() => {
         axios.get('http://tiswork.tisserv.net:9009/category', {
             headers: {
-                Authorization: 'Beaerer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('token')
             }
         }).then(resp => {
             setCategories(resp.data.content)
         })
     }, [])
-
-    // 1. Render
-    // 2. Add funksiasi cagrilir
-    /// ### /// useEffect qirir
-    // 3. Add funksiasinin icinde axios.get cagrilir (assinxron)
-    // 4. Backend cavab gelir
-    // 5. setCategories funksiasi cagrilir
-    // 6. setCategories useStatein set funksiasi olduguna gore, render prosesi cagrilir
-
-    // input elementleri, ve ya form elementleri
-    // bu elementlerde value onChange
-    // two way binding
-    // deyisen <=> input
-    // input, select, textarea
 
     return <>
         <BaseLayout>
@@ -66,7 +52,7 @@ export function Add() {
                 }
                 axios.post('http://tiswork.tisserv.net:9009/product', object, {
                     headers: {
-                        Authorization: 'Beaerer ' + localStorage.getItem('token')
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
                     }
                 }).then(resp => {
                     navigate('/products')
@@ -75,32 +61,3 @@ export function Add() {
         </BaseLayout>
     </>
 }
-
-// name, description, actions
-
-
-
-// {
-//     "total": 1,
-//     "content": [
-//       {
-//         "id": "e19f114e-91fb-11ed-b5ad-7c10c91d547f",
-//         "resource": "product",
-//         "type": "USER",
-//         "properties": {
-//           "category": "d6df7154-91fb-11ed-b5ad-7c10c91d547f",
-//           "description": "Test category details",
-//           "name": "Test category"
-//         },
-//         "references": null,
-//         "auditData": {
-//           "createdOn": "2023-01-11T22:04:12.647049Z",
-//           "updatedOn": "2023-01-11T22:04:12.647049Z",
-//           "createdBy": "test-user",
-//           "updatedBy": ""
-//         },
-//         "version": 1
-//       }
-//     ],
-//     "error": null
-//   }

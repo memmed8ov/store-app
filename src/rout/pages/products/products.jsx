@@ -19,7 +19,7 @@ export function Products() {
     function productList() {
         axios.get('http://tiswork.tisserv.net:9009/product?limit=1000', {
             headers: {
-                // Authorization: 'Beaerer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('token')
             }
         }).then(resp => {
             setProducts(resp.data.content)
@@ -49,7 +49,7 @@ export function Products() {
                             <TableCell >{productItem.properties.name}</TableCell>
                             <TableCell >{productItem.properties.description}</TableCell>
                             <TableCell style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                                <BasicCrudActions onReload={productList} pageName='product' pageUrlPart='products' item={productItem}></BasicCrudActions>
+                            <BasicCrudActions onReload={productList} pageName='product' pageUrlPart='products' item={productItem}></BasicCrudActions>
                             </TableCell>
                         </TableRow>
                     )}</TableBody>
@@ -58,12 +58,3 @@ export function Products() {
         </BaseLayout>
     </>
 }
-
-// what is productItem.id in reality
-/// cari setrin product itemi. ve ya cari setri gostericisi
-
-/*
-
-productlari secib kateqorialara elave etmek
-
-*/

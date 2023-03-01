@@ -3,7 +3,7 @@ import { useState} from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
-export function AddCategories() {
+export function CategoriesAdd() {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const navigate = useNavigate()
@@ -28,7 +28,7 @@ export function AddCategories() {
                 }
                 axios.post('http://tiswork.tisserv.net:9009/category', object,{
                     headers: {
-                        // Authorization: 'Beaerer ' + localStorage.getItem('token')
+                        Authorization: 'Bearer ' + localStorage.getItem('token')
                     }
                 }).then(resp => {
                     navigate('/categories')

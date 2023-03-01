@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { Card } from '@mui/material'
-
 export function ExchangeSimpleWidget(props) {
 
     const [fromCurrency, setFromCurrency] = useState(0)
@@ -8,7 +7,7 @@ export function ExchangeSimpleWidget(props) {
 
     return <div className="" style={{}}>
         <Card style={{ margin: '10px', width: '500px' }}>
-            <h1>{props.fromCurrency} - {props.toCurrency}</h1>
+            <h1>{props.fromCurrency} - {props.toCurrency} ({props.rate})</h1>
             <br />
             {props.fromCurrency}: <input className='laf' placeholder={props.fromCurrency} type="number" style={{ background: 'white' }}
                 value={fromCurrency} onChange={e => {
