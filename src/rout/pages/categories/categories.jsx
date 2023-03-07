@@ -24,6 +24,7 @@ export function Categories() {
             setCategories(resp.data.content)
         })
     }
+
     useEffect(() => {
         categoriesList()
     }, [])

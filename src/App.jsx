@@ -24,6 +24,8 @@ import { ExchangeItem } from './exchange/exchange-item';
 import { UserInfo } from './userinfo/user-info';
 import { Fullname } from './userinfo/fullname';
 import { Name } from './userinfo/name';
+import { SymbolDashboard } from './symsol-dashboard/symbol-dashboard';
+import { ViewHistoricalChart } from './symsol-dashboard/viewhistoricalchart';
 function ProtectedRoutes() {
   const isLoggedIn = localStorage.getItem('token')
   const navigate = useNavigate()
@@ -70,6 +72,9 @@ function App() {
         <Route path='/user-info' element={<UserInfo></UserInfo>} ></Route>
         <Route path='/fullname' element={<Fullname></Fullname>} ></Route>
         <Route path='/name' element={<Name></Name>} ></Route>
+        <Route path='/symbol-dashboard' element={<SymbolDashboard></SymbolDashboard>} ></Route>
+        {/* <Route path='/viewhistoricalchart' element={<ViewHistoricalChart></ViewHistoricalChart>} ></Route> */}
+        <Route path='/viewhistoricalchart/:symbol/:timeRange' element={<ViewHistoricalChart></ViewHistoricalChart>} ></Route>
       </Routes>
     </Router>
   </>
