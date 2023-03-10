@@ -8,12 +8,8 @@ export function ViewHistoricalChart() {
     const { symbol, timeRange } = useParams()
     const [historicalList, setHistoricalList] = useState([])
 
-    function HistoricalList() {
-        // timeRange
-        symbolHistoricalList(symbol,timeRange,setHistoricalList)
-    }
     useEffect(() => {
-        HistoricalList()
+        symbolHistoricalList(symbol, timeRange, setHistoricalList)
     }, [])
 
     const initialData = historicalList.map(item => {

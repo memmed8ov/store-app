@@ -17,12 +17,8 @@ export function Categories() {
     const navigate = useNavigate()
     const [categories, setCategories] = useState([])
 
-    function categoriesList() {
-        categoryList(setCategories)
-    }
-
     useEffect(() => {
-        categoriesList()
+        categoryList(setCategories)
     }, [])
 
     return <>
@@ -52,5 +48,3 @@ export function Categories() {
         </BaseLayout>
     </>
 }
-
-

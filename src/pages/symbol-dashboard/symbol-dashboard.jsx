@@ -18,14 +18,6 @@ export function SymbolDashboard() {
     const [historicalList, setHistoricalList] = useState([])
     const [timeRange, setTimeRange] = useState('1min') // string
 
-    function NewsList() {
-        symbolNewList(symbol, setNewsList)
-    }
-
-    function HistoricalList() {
-        symbolHistoricalList(symbol, timeRange, setHistoricalList)
-    }
-
     return <>
         <div style={{ color: 'white', marginLeft: '20px', background: 'grey', textAlign: 'center' }}>
 
@@ -42,8 +34,8 @@ export function SymbolDashboard() {
                 borderRadius: '10px', border: '3px solid'
             }}
                 onClick={() => {
-                    NewsList()
-                    HistoricalList()
+                    symbolNewList(symbol, setNewsList)
+                    symbolHistoricalList(symbol, timeRange, setHistoricalList)
                 }}
             >Load</button>
             {/* symbol, timeRange */}

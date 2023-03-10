@@ -17,11 +17,8 @@ export function Users() {
     const navigate = useNavigate()
     const [users, setUsers] = useState([])
 
-    function User() {
-        userList(setUsers)
-    }
     useEffect(() => {
-        User()
+        userList(setUsers)
     }, [])
 
     return <>

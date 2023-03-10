@@ -4,8 +4,9 @@ import { BaseLayout } from '../../components/layout/base-layout'
 import { categoryGet, categoryUpdate } from '../../service/category'
 
 export function CategoriesUpdate() {
-
+    
     const navigate = useNavigate()
+
     const itemId = useParams().id
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
