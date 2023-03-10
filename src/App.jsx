@@ -1,31 +1,29 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react';
-import { Login } from './rout/login/login';
-import { Test } from './rout/test/test'
-import { Categories } from './rout/pages/categories/categories';
-import { Products } from './rout/pages/products/products';
-import { SalesOrder } from './rout/pages/sales-orders/sales-orders';
-import { Shippment } from './rout/pages/shippment/shippment';
-import { Users } from './rout/pages/users/users';
-import { UsersAdd } from './rout/pages/users/add';
-import { UsersUpdate } from './rout/pages/users/update';
-import { UsersView } from './rout/pages/users/view';
-import { ProductsAdd } from './rout/pages/products/add';
-import { ProductUpdate } from './rout/pages/products/update';
-import { ProductView } from './rout/pages/products/view';
-import { CategoriesAdd } from './rout/pages/categories/add';
-import { CategoriesUpdate } from './rout/pages/categories/update';
-import { CategoriesView } from './rout/pages/categories/view';
-import { Password } from './rout/password/password';
-import { BasicCrudActions } from './rout/BasicCrudActions/BasicCrudActions';
-import { Exchange } from './exchange/exchange';
-import { ExchangeSimpleWidget } from './exchange/exsimwid';
-import { ExchangeItem } from './exchange/exchange-item';
-import { UserInfo } from './userinfo/user-info';
-import { Fullname } from './userinfo/fullname';
-import { Name } from './userinfo/name';
-import { SymbolDashboard } from './symsol-dashboard/symbol-dashboard';
-import { ViewHistoricalChart } from './symsol-dashboard/viewhistoricalchart';
+import { Login } from './pages/login/login';
+import { Test } from './test/test'
+import { Categories } from './pages/categories/categories';
+import { Products } from './pages/products/products';
+import { Users } from './pages/users/users';
+import { UsersAdd } from './pages/users/add';
+import { UsersUpdate } from './pages/users/update';
+import { UsersView } from './pages/users/view';
+import { ProductsAdd } from './pages/products/add';
+import { ProductUpdate } from './pages/products/update';
+import { ProductView } from './pages/products/view';
+import { CategoriesAdd } from './pages/categories/add';
+import { CategoriesUpdate } from './pages/categories/update';
+import { CategoriesView } from './pages/categories/view';
+import { Password } from './components/password/password';
+import { BasicCrudActions } from './components/BasicCrudActions/BasicCrudActions';
+import { Exchange } from './pages/exchange/exchange';
+import { ExchangeSimpleWidget } from './components/exchange/exsimwid';
+import { ExchangeItem } from './pages/exchange/exchange-item';
+import { UserInfo } from './pages/userinfo/user-info';
+import { Fullname } from './components/fullname/fullname';
+import { Name } from './pages/userinfo/name';
+import { SymbolDashboard } from './pages/symbol-dashboard/symbol-dashboard';
+import { ViewHistoricalChart } from './pages/symbol-dashboard/viewhistoricalchart';
 function ProtectedRoutes() {
   const isLoggedIn = localStorage.getItem('token')
   const navigate = useNavigate()
@@ -47,8 +45,6 @@ function ProtectedRoutes() {
       <Route path='/products/add' element={<ProductsAdd></ProductsAdd>} ></Route>
       <Route path='/products/update/:id' element={<ProductUpdate></ProductUpdate>} ></Route>
       <Route path='/products/view/:id' element={<ProductView></ProductView>} ></Route>
-      <Route path='/sales-orders' element={<SalesOrder></SalesOrder>} ></Route>
-      <Route path='/shippment' element={<Shippment></Shippment>} ></Route>
       <Route path='/users' element={<Users></Users>} ></Route>
       <Route path='/users/add' element={<UsersAdd></UsersAdd>} ></Route>
       <Route path='/users/update/:id' element={<UsersUpdate></UsersUpdate>} ></Route>
