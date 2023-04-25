@@ -1,16 +1,15 @@
 import axios from 'axios'
 
-export function productList(setProducts) {
-    axios.get('http://tiswork.tisserv.net:9009/product?limit=1000', {
+export async function productList() {
+    const resp = await axios.get('http://tiswork.tisserv.net:9009/product?limit=1000', {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         }
-    }).then(resp => {
-        setProducts(resp.data.content)
     })
+    return resp.data.content
 }
 
-export function productCreate(name, categoryId, description, navigate) {
+export async function productCreate(name, categoryId, description) {
     let object = {
         "properties": {
             "category": categoryId,
@@ -18,28 +17,23 @@ export function productCreate(name, categoryId, description, navigate) {
             "name": name
         }
     }
-    axios.post('http://tiswork.tisserv.net:9009/product', object, {
+   await axios.post('http://tiswork.tisserv.net:9009/product', object, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         }
-    }).then(() => {
-        navigate('/products')
     })
 }
 
-export function productGet(itemId, setNameUpdate, setDescriptionUpdate, setCategoryId) {
-    axios.get(`http://tiswork.tisserv.net:9009/product/${itemId}`, {
+export async function productGet(itemId) {
+    const resp = await axios.get(`http://tiswork.tisserv.net:9009/product/${itemId}`, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         }
-    }).then(resp => {
-        setNameUpdate(resp.data.Record.properties.name)
-        setDescriptionUpdate(resp.data.Record.properties.description)
-        setCategoryId(resp.data.Record.properties.category)
     })
+    return resp.data.Record.properties
 }
 
-export function productUpdate(itemId, categoryId, descriptionUpdate, nameUpdate, navigate) {
+export async function productUpdate(itemId, categoryId, descriptionUpdate, nameUpdate) {
     let object = {
         "id": "09ddf21c-938a-11ed-b5ad-7c10c91d547f",
         "resource": "product",
@@ -58,11 +52,9 @@ export function productUpdate(itemId, categoryId, descriptionUpdate, nameUpdate,
         },
         "version": 1
     }
-    axios.put('http://tiswork.tisserv.net:9009/product/' + itemId, object, {
+    await axios.put('http://tiswork.tisserv.net:9009/product/' + itemId, object, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         }
-    }).then(() => {
-        navigate('/products')
     })
 }

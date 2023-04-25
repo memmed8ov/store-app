@@ -18,7 +18,7 @@ export function Categories() {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        categoryList(setCategories)
+        categoryList().then(setCategories)
     }, [])
 
     return <>
@@ -48,3 +48,21 @@ export function Categories() {
         </BaseLayout>
     </>
 }
+
+const a = [{ z: 'taleh' }, { z: 'reyhan' }]
+
+a.map(item => item.z).forEach(item => {
+    console.log(item)
+})
+
+a.map(item => item.z).forEach(z => {
+    console.log(z)
+})
+
+a.map(item => item.z).forEach(console.log)
+
+a.forEach(item => {
+    console.log(item.z)
+})
+
+a.map(item => item.z).forEach(console.log)

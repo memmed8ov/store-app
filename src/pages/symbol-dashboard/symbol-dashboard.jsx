@@ -74,7 +74,7 @@ export function SymbolDashboard() {
                 {/* 30min - sehifeni acanda */}
                 <select value={timeRange} onChange={e => {
                     setTimeRange(e.target.value)
-                    HistoricalList()
+                    symbolHistoricalList(symbol, timeRange, setHistoricalList)
                 }}>
                     <option>1min</option>
                     <option>5min</option>

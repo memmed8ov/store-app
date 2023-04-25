@@ -22,7 +22,7 @@ export function CategoriesAdd() {
             <br />
             <br />
             <button style={{ width: '70px', height: '40px', background: 'grey', marginLeft: '50px' }} onClick={() => {
-                categoryCreate(description, name, navigate)
+                categoryCreate(description, name).then(() => navigate('/categories'))
             }}>Add</button>
         </BaseLayout>
     </>

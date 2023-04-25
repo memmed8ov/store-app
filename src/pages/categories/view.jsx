@@ -11,7 +11,10 @@ export function CategoriesView() {
     const [description, setDescription] = useState('')
 
     useEffect(() => {
-        categoryGet(itemId, setName, setDescription)
+        categoryGet(itemId).then((data) => {
+            setName(data.name)
+            setDescription(data.description)
+        })
     })
 
     return <>

@@ -4,8 +4,13 @@ import { BaseLayout } from '../../components/layout/base-layout'
 import { productGet } from '../../service/product'
 import { categoryList as categoryListLocal } from '../../service/category'
 
+// context + element
+// element + action
+
+
+
 export function ProductView() {
-    
+
     const navigate = useNavigate()
     const itemId = useParams().id
     const [categoryId, setCategoryId] = useState('')
@@ -14,8 +19,14 @@ export function ProductView() {
     const [categoryList, setCategoryList] = useState([])
 
     useEffect(() => {
-        productGet(itemId, setNameUpdate, setDescriptionUpdate, setCategoryId)
-        categoryListLocal(setCategoryList)
+
+        productGet(itemId).then((data) => {
+            setNameUpdate(data.name)
+            setDescriptionUpdate(data.description)
+            setCategoryId(data.category)
+        })
+
+        categoryListLocal().then(setCategoryList)
     }, [])
 
     return <>

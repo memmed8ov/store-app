@@ -14,10 +14,16 @@ export function ProductUpdate() {
     const [categoryList, setCategoryList] = useState([])
 
     useEffect(() => {
-        productGet(itemId, setNameUpdate, setDescriptionUpdate, setCategoryId)
-        categoryListLocal(setCategoryList)
+        productGet(itemId).then((data) => {
+            setNameUpdate(data.name)
+            setDescriptionUpdate(data.description)
+            setCategoryId(data.category)
+
+        })
+        categoryListLocal().then(setCategoryList)
 
     }, [])
+
 
     return <>
         <BaseLayout>
@@ -34,7 +40,7 @@ export function ProductUpdate() {
                 </select>
                 <button onClick={() => {
 
-                    productUpdate(itemId, categoryId, descriptionUpdate, nameUpdate, navigate)
+                    productUpdate(itemId, categoryId, descriptionUpdate, nameUpdate).then(() => navigate('/products'))
 
                 }} style={{ width: "80px", height: "40px", marginLeft: '30px', backgroundColor: 'white', borderRadius: '50px' }}>
                     update</button>

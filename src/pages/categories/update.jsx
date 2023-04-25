@@ -4,7 +4,7 @@ import { BaseLayout } from '../../components/layout/base-layout'
 import { categoryGet, categoryUpdate } from '../../service/category'
 
 export function CategoriesUpdate() {
-    
+
     const navigate = useNavigate()
 
     const itemId = useParams().id
@@ -12,7 +12,10 @@ export function CategoriesUpdate() {
     const [description, setDescription] = useState('')
 
     useEffect(() => {
-        categoryGet(itemId, setName, setDescription)
+        categoryGet(itemId).then((data) => {
+            setName(data.name)
+            setDescription(data.description)
+        })
     })
 
     return <>
@@ -23,7 +26,7 @@ export function CategoriesUpdate() {
                 Description: <input type="text" style={{ width: '20%', height: '30px', color: 'white' }}
                     value={description} onChange={e => setDescription((e.target.value))} />
                 <button onClick={() => {
-                    categoryUpdate(itemId, description, name, navigate)
+                    categoryUpdate(itemId, description, name,).then(() => navigate('/categories'))
                 }} style={{ width: "80px", height: "40px", marginLeft: '30px', backgroundColor: 'white', borderRadius: '50px' }}>
                     update</button>
                 <button onClick={() => {

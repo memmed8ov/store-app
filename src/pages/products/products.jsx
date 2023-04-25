@@ -13,13 +13,14 @@ import { BasicCrudActions } from '../../components/BasicCrudActions/BasicCrudAct
 import { productList } from '../../service/product'
 
 export function Products() {
-    
+
     const navigate = useNavigate()
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-        productList(setProducts)
+        productList().then(setProducts)
     }, [])
+
 
     function productListLocal() {
         productList(setProducts)

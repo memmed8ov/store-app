@@ -24,6 +24,9 @@ import { Fullname } from './components/fullname/fullname';
 import { Name } from './pages/userinfo/name';
 import { SymbolDashboard } from './pages/symbol-dashboard/symbol-dashboard';
 import { ViewHistoricalChart } from './pages/symbol-dashboard/viewhistoricalchart';
+import { CustomsCalculator } from './pages/customs-calculator/customs-calculator';
+import { Pin } from './pages/pin/pin';
+import { Order } from './pages/order/order';
 function ProtectedRoutes() {
   const isLoggedIn = localStorage.getItem('token')
   const navigate = useNavigate()
@@ -60,7 +63,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/login' element={<Login></Login>} ></Route>
-        <Route path='/*' element={<ProtectedRoutes />} ></Route>
+
         <Route path='/test' element={<Test></Test>} ></Route>
         <Route path='/exchange' element={<Exchange></Exchange>} ></Route>
         <Route path='/exsimwid' element={<ExchangeSimpleWidget></ExchangeSimpleWidget>} ></Route>
@@ -69,8 +72,10 @@ function App() {
         <Route path='/fullname' element={<Fullname></Fullname>} ></Route>
         <Route path='/name' element={<Name></Name>} ></Route>
         <Route path='/symbol-dashboard' element={<SymbolDashboard></SymbolDashboard>} ></Route>
-        {/* <Route path='/viewhistoricalchart' element={<ViewHistoricalChart></ViewHistoricalChart>} ></Route> */}
         <Route path='/viewhistoricalchart/:symbol/:timeRange' element={<ViewHistoricalChart></ViewHistoricalChart>} ></Route>
+        <Route path='/customs-calculator' element={<CustomsCalculator></CustomsCalculator>} ></Route>
+        <Route path='/pin' element={<Pin></Pin>} ></Route>
+        <Route path='/order' element={<Order></Order>} ></Route>
       </Routes>
     </Router>
   </>

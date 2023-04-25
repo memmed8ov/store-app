@@ -1,44 +1,62 @@
 import axios from 'axios'
 
-export function categoryList(setCategories) {
-    axios.get('http://tiswork.tisserv.net:9009/category', {
+// export function categoryList2() {
+//     return axios.get('http://tiswork.tisserv.net:9009/category', {
+//         headers: {
+//             Authorization: 'Bearer ' + localStorage.getItem('token')
+//         }
+//     }).then(resp => resp.data.content)
+// }
+
+// export const categoryList = async () => {
+//     const resp = await axios.get('http://tiswork.tisserv.net:9009/category', {
+//         headers: {
+//             Authorization: 'Bearer ' + localStorage.getItem('token')
+//         }
+//     })
+
+//     return resp.data.content
+// }
+
+export async function categoryList() {
+    const resp = await axios.get('http://tiswork.tisserv.net:9009/category', {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         }
-    }).then(resp => {
-        setCategories(resp.data.content)
     })
+
+
+    console.log(resp)
+
+    return resp.data.content
 }
 
-export function categoryCreate(description, name, navigate) {
+export async function categoryCreate(description, name) {
     let object = {
         "properties": {
             "description": description,
             "name": name
         }
     }
-    axios.post('http://tiswork.tisserv.net:9009/category', object, {
+
+    await axios.post('http://tiswork.tisserv.net:9009/category', object, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         }
-    }).then(resp => {
-        navigate('/categories')
     })
-
 }
 
-export function categoryGet(itemId, setName, setDescription) { 
-    axios.get(`http://tiswork.tisserv.net:9009/category/${itemId}`, {
+export async function categoryGet(itemId) {
+    const resp = await axios.get(`http://tiswork.tisserv.net:9009/category/${itemId}`, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         }
-    }).then(resp => {
-        setName(resp.data.record.properties.name)
-        setDescription(resp.data.record.properties.description)
     })
+
+    return resp.data.record.properties
 }
 
-export function categoryUpdate(itemId, description, name, navigate) {
+export async function categoryUpdate(itemId, description, name) {
     let object = {
         "id": "d6df7154-91fb-11ed-b5ad-7c10c91d547f",
         "resource": "category",
@@ -56,13 +74,12 @@ export function categoryUpdate(itemId, description, name, navigate) {
         },
         "version": 1
     }
-    axios.put('http://tiswork.tisserv.net:9009/category/' + itemId, object, {
+    await axios.put('http://tiswork.tisserv.net:9009/category/' + itemId, object, {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
         }
-    }).then(() => {
-        navigate('/categories')
     })
+
 }
 
 

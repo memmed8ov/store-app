@@ -12,7 +12,7 @@ export function ProductsAdd() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        categoryList(setCategories)
+        categoryList().then(setCategories)
     }, [])
 
     return <>
@@ -38,7 +38,7 @@ export function ProductsAdd() {
             <br />
             <br />
             <button style={{ width: '70px', height: '40px', background: 'grey', marginLeft: '50px' }} onClick={() => {
-                productCreate(name, categoryId, description, navigate)
+                productCreate(name, categoryId, description).then(() =>  navigate('/products'))
             }}>Add</button>
         </BaseLayout>
     </>
